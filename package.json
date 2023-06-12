@@ -1,0 +1,33 @@
+{
+  "name": "create-next-fe-app",
+  "version": "1.0.0",
+  "description": "creates a next app with various settings for a front end",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "create-next-fe-app": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CarlosAGarcia/create-next-fe-app.git"
+  },
+  "keywords": [
+    "next.js",
+    "next"
+  ],
+  "author": "carlos garcia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CarlosAGarcia/create-next-fe-app/issues"
+  },
+  "homepage": "https://github.com/CarlosAGarcia/create-next-fe-app#readme",
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "fs-extra": "^11.1.1",
+    "inquirer": "^9.2.7",
+    "simple-git": "^3.19.0"
+  }
+}
