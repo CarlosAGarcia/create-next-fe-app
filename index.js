@@ -3,6 +3,7 @@ import inquirer from 'inquirer';
 import chalk from 'chalk';
 import fs from 'fs-extra';
 import git from 'simple-git';
+import { MongoClient } from 'mongodb';
 
 const templates = [
     { name: 'Next FE with collapsible side panels and nav bar. Catch all paths. (next-fe)', repo: 'CarlosAGarcia/next-fe' },
@@ -20,9 +21,9 @@ inquirer
         },
         {
             name: 'paths',
-            message: chalk.green('What are the paths that your app will support (comma separated)?'),
-            validate: input => /^[a-z,]+$/.test(input) || 'Must be comma-separated lowercase words',
-            filter: input => input.split(',')
+            message: chalk.green('What are some additional paths (other than /index.tsx) that your app will support - comma separated (eg. /user, /user[id], /[address]) ?'),
+            validate: input => /^\/*([-a-z0-9]+|[-[a-z0-9]+])(\/+[-a-z0-9]+|[-[a-z0-9]+])+$/i.test(input) || 'Must be comma-separated lowercase words',
+            filter: input => input.replace(/ /g,'').split(',')
         },
         {
             name: 'template',
@@ -45,7 +46,7 @@ inquirer
             // Create the paths
             paths.forEach(path => {
                 console.log('creating', `${folder}/pages/${path}/index.js`)
-                fs.outputFileSync(`${folder}/pages/${path}/index.js`, `// This is the ${path} path`);
+                fs.outputFileSync(`${folder}/pages/${path}/index.tsx`, `// This is the ${path} path`);
                 console.log(chalk.cyan(`Created path: ${path}`));
             });
 
