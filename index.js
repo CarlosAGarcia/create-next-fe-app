@@ -82,7 +82,6 @@ inquirer
             console.log(chalk.cyan(`\nSetting up MongoDB database...\n`));
 
             // Connection URL
-            const url = 'mongodb+srv://carlosagarciaelias:@cluster0.x9v1b6l.mongodb.net/?retryWrites=true&w=majority';
             const client = new MongoClient(url);
             console.log(chalk.cyan(`\nSetting up MongoDB database 2...\n`, JSON.stringify(client)));
 
